@@ -13,7 +13,7 @@ Webhook = input('Webhook URL: ')
 os.system('cls')
 
 try:
-    with connect('wss://api.rbxgold.com/socket.io/?EIO=4&transport=websocket', user_agent_header = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36') as websocket:
+    with connect('wss://api.goldpump.com/socket.io/?EIO=4&transport=websocket', user_agent_header = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36') as websocket:
         
         Rain_Happening = False
 
@@ -38,7 +38,7 @@ try:
                         if Status == 'pending':
                             Rain_Happening = False
                             print('\n\nRain Ended\n')
-                            data = {'content' : f'Rain Ended <t:{int(time.mktime(datetime.now().timetuple()))}:R>.', 'username' : 'RBXGold Rain Notifier', 'avatar_url': 'https://i.imgur.com/WKs4WTp.png'}
+                            data = {'content' : f'Rain Ended <t:{int(time.mktime(datetime.now().timetuple()))}:R>.', 'username' : 'goldpump Rain Notifier', 'avatar_url': 'https://i.imgur.com/WKs4WTp.png'}
                             result = requests.post(Webhook, json = data)
                         else:
                             sys.stdout.write(f'\rAmount: {Amount}' + ' '*100)
@@ -46,7 +46,7 @@ try:
                     else:
                         if Status == 'in progress':
                             Rain_Happening = True
-                            data = {'content' : f'@everyone Rain Started <t:{int(time.mktime(datetime.now().timetuple()))}:R>.', 'username' : 'RBXGold Rain Notifier', 'avatar_url': 'https://i.imgur.com/WKs4WTp.png'}
+                            data = {'content' : f'@everyone Rain Started <t:{int(time.mktime(datetime.now().timetuple()))}:R>.', 'username' : 'goldpump Rain Notifier', 'avatar_url': 'https://i.imgur.com/WKs4WTp.png'}
                             result = requests.post(Webhook, json = data)
                 except:
                     pass
